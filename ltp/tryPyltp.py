@@ -1,7 +1,7 @@
 from pyltp import Segmentor, Postagger,Parser,SementicRoleLabeller,NamedEntityRecognizer
 import os
 
-LTP_DATA_DIR = ".\ltp_data_v3\ltp_data_v3.4.0"#LTP模型目录
+LTP_DATA_DIR = "./ltp_data_v3.4.0"#LTP模型目录
 cws_model_path = os.path.join(LTP_DATA_DIR, "cws.model")    #分词模型路径
 pos_model_path = os.path.join(LTP_DATA_DIR, 'pos.model')    #词性标注路径
 pas_model_path = os.path.join(LTP_DATA_DIR, "parser.model")     #依存句法路径

@@ -3,13 +3,13 @@ import pyltp
 
 class LtpUtil:
 
-    def __init__(self, seg_model_path = 'ltp_data_v3/ltp_data_v3.4.0/cws.model', seg_lexicon_path = 'lexicon/lexicon_test',
-                 pos_model_path = 'ltp_data_v3/ltp_data_v3.4.0/pos.model', rec_model_path = 'ltp_data_v3/ltp_data_v3.4.0/ner.model',
-                 par_model_path = 'ltp_data_v3/ltp_data_v3.4.0/parser.model'):
+    def __init__(self, seg_model_path = './ltp_data_v3.4.0/cws.model', seg_lexicon_path = './lexicon/lexicon_test',
+                 pos_model_path = './ltp_data_v3.4.0/pos.model', rec_model_path = './ltp_data_v3.4.0/ner.model',
+                 par_model_path = './ltp_data_v3.4.0/parser.model'):
         self.seg_lexicon_path = seg_lexicon_path
         self.segmentor = pyltp.Segmentor()
         self.seg_model_path = seg_model_path
-        self.segmentor.load_with_lexicon(self.seg_model_path,self.seg_lexicon_path)
+        self.segmentor.load(self.seg_model_path)
 
         self.postagger = pyltp.Postagger()
         self.pos_model_path = pos_model_path

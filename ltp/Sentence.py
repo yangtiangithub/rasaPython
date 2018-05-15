@@ -1,5 +1,5 @@
 from LtpUtil import LtpUtil
-from KeywordUtil import KeyworsUtil
+
 class Sentence(object):
     def __init__(self,sentence):
         self.sentence = sentence

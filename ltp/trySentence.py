@@ -1,4 +1,5 @@
 from Sentence import Sentence
+
 '''
 sentence = Sentence('我要听周杰伦的歌')
 print(sentence.words)

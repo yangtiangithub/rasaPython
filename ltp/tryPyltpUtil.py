@@ -1,5 +1,5 @@
 from LtpUtil import LtpUtil
-from KeywordUtil import KeyworsUtil
+
 
 ltpUtil = LtpUtil()
 sentence = '周杰伦关于妈妈的歌'
@@ -12,11 +12,7 @@ print(postags)
 print(netags)
 print('\t'.join('%s:%s' % (arc.head,arc.relation) for arc in arcs))
 
-keywordUtil = KeyworsUtil()
-numList,nameList = keywordUtil.getPersonName(words,postags)
-print(nameList)
-print(ltpUtil.seg_lexicon_path)
-print()
+
 
 
 
