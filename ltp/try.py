@@ -12,3 +12,5 @@ postags = postagger.postag(words)  # 词性标注
 
 print ('\t'.join(postags))
 postagger.release()  # 释放模型
+
+#test git push

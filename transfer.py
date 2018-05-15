@@ -1,8 +1,8 @@
 import json
 import codecs
 
-def transfer(fpath_in="./rasanlu3.json",
-             fpath_out="./chatito_output_chn.json"):
+def transfer(fpath_in="./data/rasanlu3.json",
+             fpath_out="./data/chatito_output_chn.json"):
 
     fin = codecs.open(fpath_in, 'r', 'utf8').read()
     if fin.startswith(u'\ufeff'):
