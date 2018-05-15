@@ -1,0 +1,97 @@
+%[search_by_singer]
+    ~[search] @[singer] 的歌
+    @[singer]
+%[search_by_song]
+    ~[search] @[song]
+    @[song]
+%[search_by_singer_song]
+    @[singer] 的 @[song]
+    ~[search] @[singer] 的 @[song]
+%[search_by_label]
+    ~[search] @[label] ~[type] 歌
+    @[label]
+%[search_by_instrument]
+	~[search] @[instrument] 音乐 
+	@[instrument] 音乐
+%[search_by_language]
+	~[search] @[language] 歌
+%[search_by_language_song]
+	~[search] @[language] 的 @[song]
+%[search_by_video]
+    @[video]
+%[search_video_videoScene]
+    @[video] @[video_scene]
+    @[video] 的 @[video_scene]
+    ~[search] @[video]
+    ~[search] @[video] @[video_scene]
+    ~[search] @[video] 的 @[video_scene]
+%[search_by_scene]
+	~[scene_condition] @[scene] ~[scene_time]
+    ~[search] @[scene] ~[scene_time]
+%[search_by_mood]
+    @[mood]
+    我今天很 @[mood]
+    今天很 @[mood]
+    我很 @[mood]
+    很 @[mood]
+    我今天有点 @[mood]
+    今天有点 @[mood]
+    我有点 @[mood]
+    有点 @[mood]
+@[singer]
+	庄心妍
+	冯孑孑
+	王硕
+	金基亨
+@[song]
+	找理想
+	思念天边的你
+	妄想恋曲
+@[label]
+	吉他
+	古风
+	中国风
+~[type]
+	类型
+    一类
+    一点
+@[video]
+	火影忍者
+    死神
+    海贼王
+@[video_scene]
+	主题曲
+    片尾曲
+    背景音乐
+@[scene]
+	求婚
+	公车
+	喝咖啡
+@[mood]
+	伤心
+    悲伤
+	难过
+@[instrument]
+	钢琴
+	琵琶
+	吉他
+@[language]
+	日语
+	粤语
+	华语
+~[search]
+    搜
+    找
+    有没有
+    我想找
+    我要搜
+    给我搜
+    帮我搜
+    我想听
+~[scene_condition]
+	在
+	适合
+~[scene_time]
+	的时候听的歌
+	时听的歌
+	听的歌
