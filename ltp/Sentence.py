@@ -33,13 +33,12 @@ class Sentence(object):
         #init singer
         self.setSinger(self.words, self.postags)
         #init intent
-        intentCode = self.judgeIntents()
-
+        self.intent = self.judgeIntents()
+    #识别句子中人名，并设置为歌手名
     def setSinger(self, words, postags):
         for num in range(len(postags)):
             if postags[num] == 'nh':
                 self.singer = words[num]
-
     #意图识别
     def judgeIntents(self):
         # 含有人名，并且ATT（定中关系）
@@ -53,10 +52,10 @@ class Sentence(object):
             if self.arcs[singer_num].relation == "ATT":
                 self.intent = "search_by_singer_song"
                 self.song = self.words[self.arcs[singer_num].head - 1]
-                return 1
+                return self.intent
             else:
                 self.intent = "search_by_singer"
-                return 1
+                return self.intent
         #包含关键词“类型”，则为search_by_label
         #规则xxx类型/一类
         for word in self.words:
@@ -65,7 +64,7 @@ class Sentence(object):
                 for num in range(len(self.arcs)):
                     if self.arcs[num].relation == "ATT" and self.words[self.arcs[num].head-1] == "类型":
                         self.label = self.words[num]
-                return 1
+                return self.intent
         #包含乐器，则为search_by_instrument
         #规则：xxx（乐器）
         instrumentList = ["钢琴",
@@ -90,7 +89,7 @@ class Sentence(object):
                 if instrument == word:
                     self.instrument = instrument
                     self.intent = "search_by_label"
-                    return 1
+                    return self.intent
         #包含语言，search_by_language
         #规则：xxx(语言)的歌，xxx（语言）歌，xxx（语言）的xxx（歌）
         languageList = [
@@ -125,10 +124,10 @@ class Sentence(object):
                         for word_num1 in range(len(self.words)):
                             if word_num1 > word_num + 1:
                                 self.song += self.words[word_num1]
-                                return 1
+                                return self.intent
                     else:
                         self.intent = "search_by_language"
-                        return 1
+                        return self.intent
 
         #包含关键词：背景音乐，主题曲，片尾曲,对应意图search_by_videoScene
         #规则：xxx的背景音乐/主题曲/片尾曲,xxx背景音乐/主题曲/片尾曲
@@ -142,7 +141,7 @@ class Sentence(object):
                 self.video = self.sentence[0:sceneIndex1-1]
             else:
                 self.video = self.sentence[0:sceneIndex1]
-            return 1
+            return self.intent
         if sceneIndex2 != -1:
             self.video_scene = "主题曲"
             self.intent = "search_by_videoScene"
@@ -150,7 +149,7 @@ class Sentence(object):
                 self.video = self.sentence[0 : (sceneIndex2 +1)]
             else:
                 self.video = self.sentence[0:sceneIndex2]
-            return 1
+            return self.intent
         if sceneIndex3 != -1:
             self.video_scene = "片尾曲"
             self.intent = "search_by_videoScene"
@@ -158,7 +157,7 @@ class Sentence(object):
                 self.video = self.sentence[0:sceneIndex3-1]
             else:
                 self.video = self.sentence[0:sceneIndex3]
-            return 1
+            return self.intent
         #分词含有关键词“时”、“时候”，考虑是scene查找，主要是ATT(定中关系)，定语就是scene,解决意图search_by_scene
         #规则：xxx(的)时/时候
         scene_num = None
@@ -170,7 +169,7 @@ class Sentence(object):
                     if self.arcs[arc_num].relation == "ATT" and self.arcs[arc_num].head - 1 == scene_time_num:
                         self.scene = self.words[arc_num]
                         self.intent = "search_by_scene"
-                        return 1
+                        return self.intent
         #前面几个意图识别都错过，考虑剩下一个按照心情匹配，匹配心情的关键词，解决意图search_by_mood
         #规则：xxx（心情）
         mood_num = None
@@ -203,7 +202,7 @@ class Sentence(object):
                 if self.words[word_num] == mood:
                     self.mood = mood;
                     self.intent = "search_by_mood"
-                    return 1
+                    return self.intent
 
 
 
