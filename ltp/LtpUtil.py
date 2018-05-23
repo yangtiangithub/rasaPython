@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pyltp
 
-class LtpUtil:
+class LtpUtil(object):
 
     def __init__(self, seg_model_path = './ltp_data_v3.4.0/cws.model', seg_lexicon_path = './lexicon/lexicon_test',
                  pos_model_path = './ltp_data_v3.4.0/pos.model', rec_model_path = './ltp_data_v3.4.0/ner.model',

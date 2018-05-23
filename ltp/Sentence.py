@@ -34,6 +34,7 @@ class Sentence(object):
         self.setSinger(self.words, self.postags)
         #init intent
         self.intent = self.judgeIntents()
+
     #识别句子中人名，并设置为歌手名
     def setSinger(self, words, postags):
         for num in range(len(postags)):
