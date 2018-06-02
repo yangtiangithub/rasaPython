@@ -40,6 +40,11 @@ class Sentence(object):
         for num in range(len(postags)):
             if postags[num] == 'nh':
                 self.singer = words[num]
+    #依存句法分析
+    def yicunjufa(self):
+        pass
+
+
     #意图识别
     def judgeIntents(self):
         # 含有人名，并且ATT（定中关系）
