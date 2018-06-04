@@ -1,3 +1,5 @@
+from Sentence import Sentence
+
 class DialogueManagement(object):
     def __init__(self):
         # slots
@@ -66,7 +68,17 @@ class DialogueManagement(object):
         pass
 
     def DM_search_by_singer(self):
-        pass
+        #知道歌手名，搜singer的歌
+        print("：请问你要搜%s的哪首歌？"%(self.singer))
+        sentence0 = input()
+        # sentence1 = Sentence(sentence0)
+        if sentence0 == "随便吧" or sentence0 == "随意吧" or sentence0 == "随机播放":
+            print("：好的，那我给你随机播放%s的歌" % (self.singer))
+        # elif:
+        #     sentence0 =
+        else:
+            self.song = sentence0
+            print("：好的，帮你搜周杰伦的歌%s" % (sentence0))
     def DM_search_by_label(self):
         pass
     def DM_search_by_instrument(self):

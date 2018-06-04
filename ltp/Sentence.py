@@ -55,11 +55,11 @@ class Sentence(object):
             for num in range(len(self.postags)):
                 if self.postags[num] == 'nh':
                     singer_num = num
-            if self.arcs[singer_num].relation == "ATT":
+            if self.arcs[singer_num].relation == "ATT" and self.words[self.arcs[singer_num].head-1] != "歌":
                 self.intent = "search_by_singer_song"
                 self.song = self.words[self.arcs[singer_num].head - 1]
                 return self.intent
-            else:
+            elif self.arcs[singer_num].relation == "ATT" and self.words[self.arcs[singer_num].head-1] == "歌":
                 self.intent = "search_by_singer"
                 return self.intent
         #包含关键词“类型”，则为search_by_label

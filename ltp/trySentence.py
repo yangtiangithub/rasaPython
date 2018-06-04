@@ -15,7 +15,8 @@ def testSentence(sentence):
     sentence = Sentence(sentence)
     print(sentence.words)
     # print(sentence.singer)
-    # print("intent:\t",sentence.intent)
+    print("intent:\t",sentence.intent)
+    print("singer:\t",sentence.singer)
     # print("scene:\t",sentence.scene)
     # print("mood:\t",sentence.mood)
     # print("song:\t",sentence.song)
@@ -65,7 +66,10 @@ def testSentence(sentence):
 # testSentence("工作时听的歌")
 # testSentence("工作的时候听的歌")
 # #%search_by_mood
-testSentence("我有点难过")
+# testSentence("我有点难过")
+
+testSentence("搜周杰伦的歌")
+
 
 
 
