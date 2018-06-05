@@ -4,7 +4,7 @@ from Sentence import Sentence
 class DialogueManagement(object):
 
     #states
-    states = ['init_state','singer','singer_song']
+    states = ['init_state','singer','singer_song','song']
 
     def __init__(self):
 
@@ -12,6 +12,9 @@ class DialogueManagement(object):
         self.machine.add_transition("add_singer","init_state","singer",after="in_singer")
         self.machine.add_transition("singer_add_song","singer","singer_song",after='in_singer_song')
         self.machine.add_transition("finish_call","*","init_state",after="in_init")
+        self.machine.add_transition("add_singer_song","init_state","singer_song",after="in_singer_song")
+        self.machine.add_transition("add_song","init_state","song",after="in_song")
+        self.machine.add_transition("song_add_singer","song","singer_song",after="in_singer_song")
 
     def in_singer(self,event):
         singer = event.kwargs.get("singer")
@@ -42,10 +45,23 @@ class DialogueManagement(object):
         sentence = Sentence(u0)
         if sentence.intent == "search_by_singer":
             self.add_singer(singer = sentence.singer)
-        if sentence
+        if sentence.intent == "search_by_singer_song":
+            self.add_singer_song(singer = sentence.singer, song = sentence.song)
+        if u0.find("搜歌") != -1:
+            song = u0[u0.find("搜歌") + 2 : (len(u0))]
+            self.add_song(song = song)
+
     def in_init(self,event):
         print('state:',self.state)
-
+    def in_song(self,event):
+        song = event.kwargs.get("song")
+        print("state:",self.state)
+        print("song:",song)
+        print("好的，我帮你搜%s" % (song))
+        u0 = input()
+        u0 = Sentence(u0)
+        if u0.singer != None:
+            self.song_add_singer(singer = u0.singer,song = song)
 
 if __name__ == "__main__":
     DM = DialogueManagement()
