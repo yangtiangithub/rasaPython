@@ -10,6 +10,7 @@ class LtpUtil(object):
         self.segmentor = pyltp.Segmentor()
         self.seg_model_path = seg_model_path
         self.segmentor.load_with_lexicon(self.seg_model_path,seg_lexicon_path)
+        # self.segmentor.load(self.seg_model_path)
 
         self.postagger = pyltp.Postagger()
         self.pos_model_path = pos_model_path

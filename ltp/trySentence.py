@@ -16,12 +16,12 @@ def testSentence(sentence):
     print(sentence.words)
     # print(sentence.singer)
     print("intent:\t",sentence.intent)
-    print("singer:\t",sentence.singer)
+    # print("singer:\t",sentence.singer)
     # print("scene:\t",sentence.scene)
     # print("mood:\t",sentence.mood)
     # print("song:\t",sentence.song)
     # print(sentence.label)
-    # print("instrument:","\t",sentence.instrument)
+    print("instrument:","\t",sentence.instrument)
     # print("video:",sentence.video)
     # print("video_scene:",sentence.video_scene)
     print('\t'.join('%s, %s' % (arc.head, arc.relation) for arc in sentence.arcs))
@@ -47,9 +47,9 @@ def testSentence(sentence):
 # testSentence("伤感类型的歌")
 # testSentence("我想听伤感类型的歌")
 # #%[search_by_instrument]
-# testSentence("钢琴音乐")
-# testSentence("我想听钢琴音乐")
-# testSentence("钢琴演奏的音乐")
+testSentence("钢琴音乐")
+testSentence("我想听钢琴音乐")
+testSentence("钢琴演奏的音乐")
 # #%[search_by_language]
 # testSentence("粤语歌")
 # testSentence("粤语的歌")
@@ -68,7 +68,7 @@ def testSentence(sentence):
 # #%search_by_mood
 # testSentence("我有点难过")
 
-testSentence("搜周杰伦的歌")
+# testSentence("我要搜周杰伦的晴天")
 
 
 

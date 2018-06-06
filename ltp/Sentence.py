@@ -94,7 +94,7 @@ class Sentence(object):
             for word in self.words:
                 if instrument == word:
                     self.instrument = instrument
-                    self.intent = "search_by_label"
+                    self.intent = "search_by_instrument"
                     return self.intent
         #包含语言，search_by_language
         #规则：xxx(语言)的歌，xxx（语言）歌，xxx（语言）的xxx（歌）
