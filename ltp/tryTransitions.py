@@ -4,7 +4,7 @@ from Sentence import Sentence
 class DialogueManagement(object):
 
     #states
-    states = ['init_state','singer','singer_song','song']
+    states = ['init_state','singer','singer_song','song',"singer_language"]
 
     def __init__(self):
 
@@ -15,18 +15,21 @@ class DialogueManagement(object):
         self.machine.add_transition("add_singer_song","init_state","singer_song",after="in_singer_song")
         self.machine.add_transition("add_song","init_state","song",after="in_song")
         self.machine.add_transition("song_add_singer","song","singer_song",after="in_singer_song")
+        self.machine.add_transition("singer_add_language","singer","singer_language",after="in_singer_language")
 
     def in_singer(self,event):
         singer = event.kwargs.get("singer")
         print('state:',self.state)
         print('singer:',singer)
-        print("请问你想听%s的哪首歌，还是随机播放？"%(singer))
+        print("请问你想听%s的哪首歌，还是说%s的什么语言的歌，还是随机播放？"%(singer))
         u1 = input()
         if u1 == "随便吧" or u1 == "随意吧" or u1 == "随机播放":
             print("：好的，那我给你随机播放%s的歌" % (singer))
             self.finish_call()
         # elif:
         #     sentence0 =
+        elif:
+            
         else:
             song = u1
             self.singer_add_song(singer = singer,song = song)
